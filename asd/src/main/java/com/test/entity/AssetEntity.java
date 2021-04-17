@@ -1,6 +1,8 @@
 package com.test.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -26,10 +28,14 @@ public class AssetEntity {
     private LocalDate creationDate;
     private LocalDate updateDate;
 
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id", nullable = false)
     private UserEntity userEntity;
 
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="department_id", nullable = false)
     private DepartmentEntity departmentEntity;

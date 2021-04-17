@@ -1,6 +1,5 @@
 package com.test.api.response;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

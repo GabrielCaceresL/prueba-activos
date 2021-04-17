@@ -5,15 +5,17 @@ import com.test.api.response.GeneralResponse;
 import com.test.entity.UserEntity;
 import com.test.mappers.IUserMapper;
 import com.test.repository.UserEntityRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
-import static com.test.enums.ConstantProvider.USER_SAVE_SUCCESSFUL;
+import static com.test.enums.ConstantProvider.*;
 
 @Service
-public class UserService implements IUserService{
+@Slf4j
+public class UserService implements IUserService {
 
     private final UserEntityRepository userEntityRepository;
 
@@ -25,12 +27,41 @@ public class UserService implements IUserService{
     @Transactional
     public Optional<GeneralResponse<UserDto>> save(UserDto userDto) {
         UserEntity userEntity = IUserMapper.INSTANCE.toUserEntity(userDto);
-        userEntityRepository.findByNumDocument(userEntity.getNumDocument()).orElseThrow(() -> new RuntimeException("El usuario ya existe"));
+        log.info("UserEntity -> {}", userEntity.toString());
+        userEntityRepository.findByNumDocument(userEntity.getNumDocument())
+                .ifPresent(userEntity1 -> {
+                    throw new RuntimeException("El usuario ya existe");
+                });
         UserEntity storedEntity = userEntityRepository.save(userEntity);
+        log.info("storedEntity -> {}", storedEntity.toString());
         return Optional.ofNullable(storedEntity)
                 .map(IUserMapper.INSTANCE::toDto)
                 .map(dto -> new GeneralResponse<>(dto, USER_SAVE_SUCCESSFUL));
     }
 
+    @Override
+    @Transactional
+    public Optional<GeneralResponse<UserDto>> update(UserDto userDto) {
+        UserEntity userEntity = IUserMapper.INSTANCE.toUserEntity(userDto);
+        return userEntityRepository
+                .findByNumDocument(userEntity.getNumDocument())
+                .map(userFromDb -> {
+                    userFromDb.setFirstName(userEntity.getFirstName());
+                    userFromDb.setSecondName(userEntity.getSecondName());
+                    userFromDb.setFirstSurname(userEntity.getFirstSurname());
+                    userFromDb.setNumDocument(userEntity.getNumDocument());
+                    return userEntityRepository.save(userFromDb);
+                })
+                .map(storedUser -> new GeneralResponse<>(IUserMapper.INSTANCE.toDto(storedUser), USER_UPDATE_SUCCESSFUL));
+    }
+
+    @Override
+    @Transactional
+    public Optional<GeneralResponse<UserDto>> get(String numDocument) {
+        return userEntityRepository
+                .findByNumDocument(numDocument)
+                .map(userEntity -> new GeneralResponse<>(IUserMapper.INSTANCE.toDto(userEntity), USER_FOUND));
+
+    }
 
 }

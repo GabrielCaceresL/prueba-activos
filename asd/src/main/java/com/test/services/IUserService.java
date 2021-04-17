@@ -7,4 +7,7 @@ import java.util.Optional;
 
 public interface IUserService {
     Optional<GeneralResponse<UserDto>> save(UserDto userDto);
+    Optional<GeneralResponse<UserDto>> update(UserDto userDto);
+    Optional<GeneralResponse<UserDto>> get(String numDocument);
+
 }
