@@ -11,6 +11,7 @@ import java.util.Set;
 public class DepartmentEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long idArea;
     private String name;
     private LocalDate creationDate;

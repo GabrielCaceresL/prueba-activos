@@ -1,6 +1,7 @@
 package com.test.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.NaturalId;
 
 
 import javax.persistence.*;
@@ -12,7 +13,9 @@ import java.util.Set;
 public class UserEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @NaturalId
     private String numDocument;
     private String firstName;
     private String secondName;

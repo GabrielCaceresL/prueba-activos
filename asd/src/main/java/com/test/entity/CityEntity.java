@@ -2,10 +2,7 @@ package com.test.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -14,6 +11,7 @@ import java.util.Set;
 public class CityEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long idCity;
     private String name;
     private LocalDate creationDate;

@@ -10,6 +10,7 @@ import java.time.LocalDate;
 public class AssetEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String description;
