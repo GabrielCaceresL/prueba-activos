@@ -5,4 +5,8 @@ public final class ConstantProvider {
     public static final String USER_SAVE_SUCCESSFUL= "User save successful";
     public static final String USER_UPDATE_SUCCESSFUL= "User update successful";
     public static final String USER_FOUND= "User found";
+
+    public static final String CITY_SAVE_SUCCESSFUL= "City save successful";
+    public static final String CITY_UPDATE_SUCCESSFUL= "City update successful";
+    public static final String CITY_FOUND= "City found";
 }
