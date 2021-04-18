@@ -14,4 +14,5 @@ public interface UserEntityRepository extends CrudRepository<UserEntity, Long> {
     Optional<UserEntity> findByNumDocument(String numDocument);
 
 
+
 }

@@ -12,4 +12,5 @@ public interface DepartmentEntityRepository extends CrudRepository<DepartmentEnt
     DepartmentEntity findByName(String nameDepartment);
 
 
+
 }

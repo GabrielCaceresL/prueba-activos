@@ -1,5 +1,6 @@
 package com.test.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -27,6 +28,7 @@ public class UserEntity {
     private LocalDate creationDate;
     private LocalDate updateDate;
 
+    @JsonIgnore
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "userEntity")

@@ -12,17 +12,17 @@ import java.time.LocalDate;
 public class AssetEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String description;
     private String type;
     private String serial;
-    private String numbInventory;
-    private String weight;
-    private String high;
-    private String width;
-    private String longAsset;
+    private String numInventory;
+    private String weightKg;
+    private String highCm;
+    private String widthCm;
+    private String longAssetCm;
     private String purchaseValue;
     private LocalDate purchaseDate;
     private LocalDate creationDate;
@@ -31,14 +31,23 @@ public class AssetEntity {
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="user_id", nullable = false)
+    @JoinColumn(name="user_id")
     private UserEntity userEntity;
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="department_id", nullable = false)
+    @JoinColumn(name="department_id")
     private DepartmentEntity departmentEntity;
 
+    @PreUpdate
+    public void preUpdate() {
+        this.updateDate = LocalDate.now();
+    }
+
+    @PrePersist
+    public void prePersist() {
+        this.creationDate = LocalDate.now();
+    }
 
 }

@@ -1,5 +1,6 @@
 package com.test.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -22,11 +23,13 @@ public class DepartmentEntity {
     private LocalDate creationDate;
     private LocalDate updateDate;
 
+    @JsonIgnore
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "departmentEntity")
     private Set<AssetEntity> assetEntity = new HashSet<>();
 
+    @JsonIgnore
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @ManyToMany(fetch = FetchType.LAZY)
@@ -48,7 +51,6 @@ public class DepartmentEntity {
 
     public void addCity(CityEntity cityEntity){
         this.cityEntities.add(cityEntity);
-      //  cityEntity.getDepartmentEntity().add(this);
     }
 
     public void removeCity(CityEntity cityEntityRemove){
