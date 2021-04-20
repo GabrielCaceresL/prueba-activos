@@ -62,7 +62,7 @@ Once you have an active database, open another terminal, go to the root folder `
 
 ```bash
 ./mvn clean install
-java -jar prueba-activos/asd/target/prueba-tecnica-asd-*.jar
+java -jar asd/target/prueba-tecnica-asd-*.jar
 ```
 
 * This application runs over port 8080, so you should prefix endpoints with http://localhost:8080/
