@@ -30,7 +30,7 @@ public class UserService implements IUserService {
         log.info("UserEntity -> {}", userEntity.toString());
         userEntityRepository.findByNumDocument(userEntity.getNumDocument())
                 .ifPresent(userEntity1 -> {
-                    throw new RuntimeException("El usuario ya existe");
+                    throw new RuntimeException(USER_EXISTS);
                 });
         UserEntity storedEntity = userEntityRepository.save(userEntity);
         log.info("storedEntity -> {}", storedEntity.toString());
@@ -43,6 +43,9 @@ public class UserService implements IUserService {
     @Transactional
     public Optional<GeneralResponse<UserDto>> update(UserDto userDto) {
         UserEntity userEntity = IUserMapper.INSTANCE.toUserEntity(userDto);
+        if (userEntityRepository.existsByNumDocument(userEntity.getNumDocument())) {
+            throw new RuntimeException(USER_NOT_EXIST);
+        }
         return userEntityRepository
                 .findByNumDocument(userEntity.getNumDocument())
                 .map(userFromDb -> {
@@ -58,10 +61,12 @@ public class UserService implements IUserService {
     @Override
     @Transactional
     public Optional<GeneralResponse<UserDto>> get(String numDocument) {
+        if (userEntityRepository.existsByNumDocument(numDocument)) {
+            throw new RuntimeException(USER_NOT_FOUND);
+        }
         return userEntityRepository
                 .findByNumDocument(numDocument)
                 .map(userEntity -> new GeneralResponse<>(IUserMapper.INSTANCE.toDto(userEntity), USER_FOUND));
-
     }
 
 }

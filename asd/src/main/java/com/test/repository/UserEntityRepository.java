@@ -13,6 +13,8 @@ public interface UserEntityRepository extends CrudRepository<UserEntity, Long> {
     @EntityGraph(attributePaths = {"assetEntity"})
     Optional<UserEntity> findByNumDocument(String numDocument);
 
+    boolean existsByNumDocument(String numDocument);
+
 
 
 }

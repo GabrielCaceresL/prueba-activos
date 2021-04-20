@@ -5,6 +5,8 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Data
@@ -14,16 +16,24 @@ public class AssetEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+
     private String name;
     private String description;
+
+
     private String type;
+
+
     private String serial;
+
     private String numInventory;
     private String weightKg;
     private String highCm;
     private String widthCm;
     private String longAssetCm;
     private String purchaseValue;
+
     private LocalDate purchaseDate;
     private LocalDate creationDate;
     private LocalDate updateDate;

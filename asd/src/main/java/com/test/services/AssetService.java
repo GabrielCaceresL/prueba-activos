@@ -32,7 +32,8 @@ public class AssetService implements IAssetService {
     @Override
     public Optional<GeneralResponse<AssetUserDto>> save(AssetUserDto assetUserDto) {
         AssetEntity assetEntity = IAssetMapper.INSTANCE.toAssetEntity(assetUserDto);
-        AssetEntity assetEntityStored = userEntityRepository.findByNumDocument(assetUserDto.getUserEntity())
+        log.info("DOC USER -> {}",assetUserDto.getDocumentUser());
+        AssetEntity assetEntityStored = userEntityRepository.findByNumDocument(assetUserDto.getDocumentUser())
                 .map(userFromDb -> {
                     assetEntity.setUserEntity(userFromDb);
                     return assetEntityRepository.save(assetEntity);
@@ -45,7 +46,7 @@ public class AssetService implements IAssetService {
     public Optional<GeneralResponse<AssetAreaDto>> save(AssetAreaDto assetAreaDto) {
         AssetEntity assetEntity = IAssetMapper.INSTANCE.toAssetEntity(assetAreaDto);
         DepartmentEntity departmentFromDb = departmentEntityRepository
-                .findByName(assetAreaDto.getDepartmentEntity());
+                .findByName(assetAreaDto.getNameDepartment());
         if (departmentFromDb == null) {
             throw new RuntimeException("Departamento no encontrado");
         }
@@ -58,7 +59,7 @@ public class AssetService implements IAssetService {
     @Override
     public Optional<GeneralResponse<AssetUserDto>> update(AssetUserDto assetUserDto) {
         return userEntityRepository
-                .findByNumDocument(assetUserDto.getUserEntity())
+                .findByNumDocument(assetUserDto.getDocumentUser())
                 .flatMap(userFromDb ->
                         assetEntityRepository
                                 .findBySerial(assetUserDto.getSerial())
@@ -70,7 +71,7 @@ public class AssetService implements IAssetService {
                                 }))
                 .map(asset -> {
                     AssetUserDto assetUserDtoResponse = IAssetMapper.INSTANCE.toUserDto(asset);
-                    assetUserDtoResponse.setUserEntity(asset.getUserEntity().getNumDocument());
+                    assetUserDtoResponse.setDocumentUser(asset.getUserEntity().getNumDocument());
                     return new GeneralResponse<>(assetUserDtoResponse, "USer Update ----------");
                 });
     }
@@ -78,7 +79,7 @@ public class AssetService implements IAssetService {
     @Override
     public Optional<GeneralResponse<AssetAreaDto>> update(AssetAreaDto assetAreaDto) {
         return Optional.ofNullable(departmentEntityRepository
-                .findByName(assetAreaDto.getDepartmentEntity()))
+                .findByName(assetAreaDto.getNameDepartment()))
                 .flatMap(departmentFromDb ->
                         assetEntityRepository
                                 .findBySerial(assetAreaDto.getSerial())
@@ -90,7 +91,7 @@ public class AssetService implements IAssetService {
                                 }))
                 .map(asset -> {
                     AssetAreaDto assetAreaDtoResponse = IAssetMapper.INSTANCE.toAreaDto(asset);
-                    assetAreaDtoResponse.setDepartmentEntity(asset.getDepartmentEntity().getName());
+                    assetAreaDtoResponse.setNameDepartment(asset.getDepartmentEntity().getName());
                     return new GeneralResponse<>(assetAreaDtoResponse, "Department Update ----------");
                 });
     }

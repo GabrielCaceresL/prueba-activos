@@ -15,10 +15,10 @@ public interface IAssetMapper {
 
     IAssetMapper INSTANCE = Mappers.getMapper(IAssetMapper.class);
 
-    @Mapping(source = "userEntity.numDocument", target = "userEntity")
+    @Mapping(source = "userEntity.numDocument", target = "documentUser")
     AssetUserDto toUserDto(AssetEntity assetEntity);
 
-    @Mapping(source = "departmentEntity.name", target = "departmentEntity")
+    @Mapping(source = "departmentEntity.name", target = "nameDepartment")
     AssetAreaDto toAreaDto(AssetEntity assetEntity);
 
     @InheritInverseConfiguration

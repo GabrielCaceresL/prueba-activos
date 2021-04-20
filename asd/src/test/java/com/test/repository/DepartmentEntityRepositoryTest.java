@@ -3,6 +3,7 @@ package com.test.repository;
 import com.test.entity.CityEntity;
 import com.test.entity.DepartmentEntity;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -17,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 @Transactional
+@Disabled
 class DepartmentEntityRepositoryTest {
 
     @Autowired
@@ -46,6 +48,7 @@ class DepartmentEntityRepositoryTest {
     }
 
     @Test
+    @Disabled
     void testGetDepartments(){
         List<DepartmentEntity> departmentEntityList = (List<DepartmentEntity>) departmentEntityRepository.findAll();
         assertFalse(departmentEntityList.isEmpty(), "La lista está vacia");

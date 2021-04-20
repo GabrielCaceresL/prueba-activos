@@ -8,9 +8,9 @@
         <version>2.4.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.prueba</groupId>
-    <artifactId>demo</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <groupId>co.com.prueba</groupId>
+    <artifactId>prueba-tecnica-asd</artifactId>
+    <version>0.0.1</version>
     <name>prueba activos</name>
     <description>Demo project for Spring Boot</description>
     <properties>
