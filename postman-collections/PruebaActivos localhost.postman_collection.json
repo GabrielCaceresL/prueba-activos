@@ -1,0 +1,425 @@
+{
+	"info": {
+		"_postman_id": "c9a9c4c3-53f2-436a-900c-a9a329f494f2",
+		"name": "PruebaActivos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numDocument\": \"1012453176\",\r\n    \"firstName\": \"Gabriel\",\r\n    \"secondName\": \"Alejandro\",\r\n    \"firstSurname\": \"Caceres\",\r\n    \"secondSurname\": \"Leguizamon\",\r\n    \"birthday\": \"1998-06-07\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numDocument\": \"1012453176\",\r\n    \"firstName\": \"Gabriel\",\r\n    \"secondName\": \"\",\r\n    \"firstSurname\": \"Caceres\",\r\n    \"secondSurname\": \"Leguizamon\",\r\n    \"birthday\": \"1998-06-07\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/user?numDoc=1012453176",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "numDoc",
+									"value": "1012453176"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "City",
+			"item": [
+				{
+					"name": "Create City",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Bogota\",\r\n  \"codeCity\": \"CT2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/city",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"city"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update City",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n  \"name\": \"Medellin\",\r\n  \"codeCity\": \"CT2\"\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/city?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"city"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get City",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/city?codeCity=CT2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"city"
+							],
+							"query": [
+								{
+									"key": "codeCity",
+									"value": "CT2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Department",
+			"item": [
+				{
+					"name": "Create Department",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Purchases\",\r\n  \"cityEntities\": [\r\n    \"Medellin\"\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/department",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"department"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Department",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Purchases\",\r\n  \"cityEntities\": [\r\n    \"Bogota\"\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/department",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"department"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Department",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/department?departmentName=Purchases",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"department"
+							],
+							"query": [
+								{
+									"key": "departmentName",
+									"value": "Purchases"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Asset",
+			"item": [
+				{
+					"name": "Create asset for area",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Escritorio\",\r\n  \"description\": \"Mesa de apoyo\",\r\n  \"type\": \"Fijo1\",\r\n  \"serial\": \"12312\",\r\n  \"numInventory\": \"111112\",\r\n  \"weightKg\": \"10\",\r\n  \"highCm\": \"20\",\r\n  \"widthCm\": \"30\",\r\n  \"longAssetCm\": \"40\",\r\n  \"purchaseValue\": 45000.20,\r\n  \"purchaseDate\": \"2021-04-20\",\r\n  \"nameDepartment\": \"Purchases\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/asset/asset-for-area",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"asset",
+								"asset-for-area"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create asset for user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Escritorio\",\r\n  \"description\": \"Mesa de apoyo\",\r\n  \"type\": \"Fijo\",\r\n  \"serial\": \"123123\",\r\n  \"numInventory\": \"111112\",\r\n  \"weightKg\": \"10\",\r\n  \"highCm\": \"20\",\r\n  \"widthCm\": \"30\",\r\n  \"longAssetCm\": \"40\",\r\n  \"purchaseValue\": 45000.20,\r\n  \"purchaseDate\": \"2021-04-20\",\r\n  \"documentUser\": \"1012453176\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/asset/asset-for-user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"asset",
+								"asset-for-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Asset",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"type\": \"Fijo\",\r\n  \"serial\": \"123123\",\r\n  \"purchaseDate\": \"2021-04-20\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/asset",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"asset"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update asset for user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"name\": \"Escritorio\",\r\n  \"description\": \"Mesa de apoyo\",\r\n  \"type\": \"Fijo\",\r\n  \"serial\": \"123123\",\r\n  \"numInventory\": \"111112\",\r\n  \"weightKg\": \"10\",\r\n  \"highCm\": \"20\",\r\n  \"widthCm\": \"30\",\r\n  \"longAssetCm\": \"40\",\r\n  \"purchaseValue\": 1235000.20,\r\n  \"purchaseDate\": \"2021-04-20\",\r\n  \"documentUser\": \"1012453176\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/asset/asset-for-user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"asset",
+								"asset-for-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update asset for area",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Escritorio\",\r\n  \"description\": \"Mesa de apoyo\",\r\n  \"type\": \"Fijo1\",\r\n  \"serial\": \"12312\",\r\n  \"numInventory\": \"111112\",\r\n  \"weightKg\": \"10\",\r\n  \"highCm\": \"20\",\r\n  \"widthCm\": \"30\",\r\n  \"longAssetCm\": \"40\",\r\n  \"purchaseValue\": 45000.20,\r\n  \"purchaseDate\": \"2021-04-20\",\r\n  \"nameDepartment\": \"Purchases\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/asset/asset-for-area",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"asset",
+								"asset-for-area"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
