@@ -61,7 +61,7 @@ your computer, you can modify the DataBase port, db username and db password in 
 Once you have an active database, open another terminal, go to the root folder `cd prueba-activos`, and use:
 
 ```bash
-./mvn clean install
+ ./mvnw clean package -DskipTests
 java -jar asd/target/prueba-tecnica-asd-*.jar
 ```
 
