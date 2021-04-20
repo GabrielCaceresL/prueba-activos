@@ -37,7 +37,7 @@ is an open-source build automation tool that is designed to be flexible enough t
 - You need a Database to persist Data
 - Before run application, follow the next steps:
 > Deploy MariaDb:
-> 1. Change into `cd docker-db`, in terminal use:
+> 1. Change into `cd db-on-docker`, in terminal use:
 ```bash
 docker-compose up
 ```
