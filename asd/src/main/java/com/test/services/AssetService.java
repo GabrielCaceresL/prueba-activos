@@ -33,6 +33,7 @@ public class AssetService implements IAssetService {
 
     @Override
     public Optional<GeneralResponse<AssetUserDto>> save(AssetUserDto assetUserDto) {
+        log.info("AssetService.save assetUserDto -> {}",assetUserDto.toString());
         AssetEntity assetEntity = IAssetMapper.INSTANCE.toAssetEntity(assetUserDto);
         if (assetEntityRepository.existsBySerial(assetUserDto.getSerial())) {
             throw new RuntimeException(ASSET_EXISTS);
@@ -48,6 +49,7 @@ public class AssetService implements IAssetService {
 
     @Override
     public Optional<GeneralResponse<AssetAreaDto>> save(AssetAreaDto assetAreaDto) {
+        log.info("AssetService.save assetAreaDto -> {}",assetAreaDto.toString());
         AssetEntity assetEntity = IAssetMapper.INSTANCE.toAssetEntity(assetAreaDto);
         if (assetEntityRepository.existsBySerial(assetAreaDto.getSerial())) {
             throw new RuntimeException(ASSET_EXISTS);
@@ -65,6 +67,7 @@ public class AssetService implements IAssetService {
 
     @Override
     public Optional<GeneralResponse<AssetUserDto>> update(AssetUserDto assetUserDto) {
+        log.info("AssetService.update assetUserDto -> {}",assetUserDto.toString());
         if (!assetEntityRepository.existsBySerial(assetUserDto.getSerial())) {
             throw new RuntimeException(ASSET_NOT_EXISTS);
         }
@@ -91,6 +94,7 @@ public class AssetService implements IAssetService {
 
     @Override
     public Optional<GeneralResponse<AssetAreaDto>> update(AssetAreaDto assetAreaDto) {
+        log.info("AssetService.update assetAreaDto -> {}",assetAreaDto.toString());
         if (!assetEntityRepository.existsBySerial(assetAreaDto.getSerial())) {
             throw new RuntimeException(ASSET_NOT_EXISTS);
         }
@@ -130,6 +134,7 @@ public class AssetService implements IAssetService {
 
     @Override
     public GeneralResponse<List<AssetEntity>> get(AssetSearchDto assetSearchDto) {
+        log.info("AssetService.get assetSearchDto -> {}",assetSearchDto.toString());
         if (!assetEntityRepository
                 .existsByTypeOrSerialOrPurchaseDate(assetSearchDto.getType(),
                         assetSearchDto.getSerial(), assetSearchDto.getPurchaseDate())) {

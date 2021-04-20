@@ -26,6 +26,7 @@ public class CityService implements ICityService{
     @Override
     @Transactional
     public Optional<GeneralResponse<CityDto>> save(CityDto cityDto) {
+        log.info("CityService.save cityDto -> {}",cityDto.toString());
         CityEntity cityEntity = ICityMapper.INSTANCE.toCityEntity(cityDto);
         if(cityEntityRepository.existsByName(cityEntity.getName())) {
             throw new RuntimeException(CITY_NAME_EXISTS);
@@ -43,7 +44,7 @@ public class CityService implements ICityService{
     @Override
     @Transactional
     public Optional<GeneralResponse<CityDto>> update(CityDto cityDto) {
-        log.info("City dto update -> {}",cityDto.toString());
+        log.info("CityService.update cityDto -> {}",cityDto.toString());
         CityEntity cityEntity = ICityMapper.INSTANCE.toCityEntity(cityDto);
         if (!cityEntityRepository.existsByCodeCity(cityEntity.getCodeCity())) {
             throw new RuntimeException(CITY_NOT_EXISTS);
@@ -60,6 +61,7 @@ public class CityService implements ICityService{
 
     @Override
     public Optional<GeneralResponse<CityDto>> get(String codeCity) {
+        log.info("CityService.get codeCity -> {}",codeCity);
         if (!cityEntityRepository.existsByCodeCity(codeCity)) {
             throw new RuntimeException(CITY_NOT_FOUND);
         }

@@ -26,6 +26,7 @@ public class UserService implements IUserService {
     @Override
     @Transactional
     public Optional<GeneralResponse<UserDto>> save(UserDto userDto) {
+        log.info("UserService.save userDto -> {}",userDto.toString());
         UserEntity userEntity = IUserMapper.INSTANCE.toUserEntity(userDto);
         log.info("UserEntity -> {}", userEntity.toString());
         userEntityRepository.findByNumDocument(userEntity.getNumDocument())
@@ -42,6 +43,7 @@ public class UserService implements IUserService {
     @Override
     @Transactional
     public Optional<GeneralResponse<UserDto>> update(UserDto userDto) {
+        log.info("UserService.update userDto -> {}",userDto.toString());
         UserEntity userEntity = IUserMapper.INSTANCE.toUserEntity(userDto);
         if (!userEntityRepository.existsByNumDocument(userEntity.getNumDocument())) {
             throw new RuntimeException(USER_NOT_EXIST);
@@ -61,6 +63,7 @@ public class UserService implements IUserService {
     @Override
     @Transactional
     public Optional<GeneralResponse<UserDto>> get(String numDocument) {
+        log.info("UserService.get numDocument -> {}",numDocument);
         if (!userEntityRepository.existsByNumDocument(numDocument)) {
             throw new RuntimeException(USER_NOT_FOUND);
         }

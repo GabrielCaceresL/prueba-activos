@@ -32,6 +32,7 @@ public class DepartmentService implements IDepartmentService {
 
     @Override
     public Optional<GeneralResponse<DepartmentDto>> save(DepartmentDto departmentDto) {
+        log.info("DepartmentService.save departmentDto -> {}",departmentDto.toString());
         DepartmentEntity departmentEntity = new DepartmentEntity();
         if(departmentEntityRepository.existsByName(departmentDto.getName())){
             throw new RuntimeException(DEPARTMENT_EXISTS);
@@ -43,6 +44,7 @@ public class DepartmentService implements IDepartmentService {
 
     @Override
     public Optional<GeneralResponse<DepartmentDto>> update(DepartmentDto departmentDto) {
+        log.info("DepartmentService.update departmentDto -> {}",departmentDto.toString());
         DepartmentEntity departmentEntity = departmentEntityRepository.findByName(departmentDto.getName());
         if (!departmentEntityRepository.existsByName(departmentDto.getName())) {
             throw new RuntimeException(DEPARTMENT_NOT_EXISTS);
@@ -53,6 +55,7 @@ public class DepartmentService implements IDepartmentService {
 
     @Override
     public Optional<GeneralResponse<DepartmentDto>> get(String name) {
+        log.info("DepartmentService.get name -> {}",name);
         if (!departmentEntityRepository.existsByName(name)) {
             throw new RuntimeException(DEPARTMENT_NOT_FOUND);
         }
@@ -69,7 +72,6 @@ public class DepartmentService implements IDepartmentService {
                 throw new RuntimeException(CITY_NOT_EXISTS+": "+ city);
             }
         });
-
         departmentEntity.setCityEntities(cities);
         DepartmentEntity departmentEntity1 = departmentEntityRepository.save(departmentEntity);
         DepartmentDto departmentDtoResponse = IDepartmentMapper.INSTANCE
