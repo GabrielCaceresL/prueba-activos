@@ -2,6 +2,7 @@ package com.test.services;
 
 import com.test.api.request.AssetAreaDto;
 import com.test.api.request.AssetDto;
+import com.test.api.request.AssetSearchDto;
 import com.test.api.request.AssetUserDto;
 import com.test.api.response.GeneralResponse;
 import com.test.entity.AssetEntity;
@@ -54,7 +55,7 @@ public class AssetService implements IAssetService {
         DepartmentEntity departmentFromDb = departmentEntityRepository
                 .findByName(assetAreaDto.getNameDepartment());
         if (departmentFromDb == null) {
-            throw new RuntimeException(DEPARTMENT_NOT_FOUND);
+            throw new RuntimeException(DEPARTMENT_NOT_EXISTS);
         }
         assetEntity.setDepartmentEntity(departmentFromDb);
         AssetEntity assetAreaStored = assetEntityRepository.save(assetEntity);
@@ -66,6 +67,9 @@ public class AssetService implements IAssetService {
     public Optional<GeneralResponse<AssetUserDto>> update(AssetUserDto assetUserDto) {
         if (!assetEntityRepository.existsBySerial(assetUserDto.getSerial())) {
             throw new RuntimeException(ASSET_NOT_EXISTS);
+        }
+        if (!userEntityRepository.existsByNumDocument(assetUserDto.getDocumentUser())) {
+            throw new RuntimeException(USER_NOT_EXIST);
         }
         return userEntityRepository
                 .findByNumDocument(assetUserDto.getDocumentUser())
@@ -89,6 +93,9 @@ public class AssetService implements IAssetService {
     public Optional<GeneralResponse<AssetAreaDto>> update(AssetAreaDto assetAreaDto) {
         if (!assetEntityRepository.existsBySerial(assetAreaDto.getSerial())) {
             throw new RuntimeException(ASSET_NOT_EXISTS);
+        }
+        if (!departmentEntityRepository.existsByName(assetAreaDto.getNameDepartment())) {
+            throw new RuntimeException(DEPARTMENT_NOT_EXISTS);
         }
         return Optional.ofNullable(departmentEntityRepository
                 .findByName(assetAreaDto.getNameDepartment()))
@@ -122,12 +129,14 @@ public class AssetService implements IAssetService {
     }
 
     @Override
-    public GeneralResponse<List<AssetEntity>> get(AssetDto assetDto) {
-        if (!assetEntityRepository.existsBySerial(assetDto.getSerial())) {
-            throw new RuntimeException(ASSET_NOT_FOUND);
+    public GeneralResponse<List<AssetEntity>> get(AssetSearchDto assetSearchDto) {
+        if (!assetEntityRepository
+                .existsByTypeOrSerialOrPurchaseDate(assetSearchDto.getType(),
+                        assetSearchDto.getSerial(), assetSearchDto.getPurchaseDate())) {
+            throw new RuntimeException(NOT_ASSETS_FOUND);
         }
-        List<AssetEntity> assetEntities = assetEntityRepository.findByTypeOrPurchaseDateOrSerial(assetDto.getType(), assetDto.getPurchaseDate(),
-                assetDto.getSerial());
+        List<AssetEntity> assetEntities = assetEntityRepository.findByTypeOrPurchaseDateOrSerial(assetSearchDto.getType(), assetSearchDto.getPurchaseDate(),
+                assetSearchDto.getSerial());
         return new GeneralResponse<>(assetEntities, ASSET_FOUND);
     }
 

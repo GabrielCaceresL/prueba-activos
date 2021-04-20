@@ -27,7 +27,7 @@ public class UserController {
     }
 
     @PutMapping
-    public ResponseEntity<Optional<GeneralResponse<UserDto>>> update(@RequestBody UserDto body){
+    public ResponseEntity<Optional<GeneralResponse<UserDto>>> update(@Valid @RequestBody UserDto body){
         return ResponseEntity.ok(iUserService.update(body));
     }
 

@@ -37,7 +37,7 @@ public final class ConstantProvider {
 
     public static final String ASSET_EXISTS="Asset already exists";
     public static final String ASSET_NOT_EXISTS="Asset not exists";
-    public static final String ASSET_NOT_FOUND="Asset not exists";
-
+    public static final String ASSET_NOT_FOUND="Asset not found";
+    public static final String NOT_ASSETS_FOUND="Not assets found";
 
 }

@@ -1,9 +1,16 @@
 package com.test.api.request;
 
-import lombok.EqualsAndHashCode;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@EqualsAndHashCode(callSuper = false)
+import java.time.LocalDate;
+
+@Data
 @NoArgsConstructor
-public class AssetSearchDto extends AssetDto{
+public class AssetSearchDto {
+
+    private String type;
+    private String serial;
+    private LocalDate purchaseDate;
+
 }

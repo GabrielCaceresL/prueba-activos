@@ -1413,10 +1413,10 @@ true posixrules
     <database id="2" parent="1" name="assets">
       <ObjectId>16384</ObjectId>
       <Owner>root</Owner>
-      <IntrospectionStateNumber>869</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1317</IntrospectionStateNumber>
       <Current>1</Current>
-      <Relations>sequence|table|17294|17296|1
-sequence|table|17304|17306|1
+      <Relations>sequence|table|18419|18421|1
+sequence|table|18429|18431|1
 </Relations>
     </database>
     <database id="3" parent="1" name="postgres">
@@ -1492,7 +1492,7 @@ UC/10
 </Acl>
       <StateNumber>287</StateNumber>
       <Owner>root</Owner>
-      <IntrospectionStateNumber>870</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1318</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <extension id="18" parent="2" name="plpgsql">
@@ -1593,149 +1593,149 @@ UC/10
       <Type>index</Type>
     </access-method>
     <sequence id="30" parent="17" name="hibernate_sequence">
-      <ObjectId>17292</ObjectId>
+      <ObjectId>18417</ObjectId>
       <Owner>root</Owner>
-      <StateNumber>850</StateNumber>
+      <StateNumber>1301</StateNumber>
       <DataType>bigint|0s</DataType>
     </sequence>
     <sequence id="31" parent="17" name="asset_entity_id_seq">
-      <ObjectId>17294</ObjectId>
+      <ObjectId>18419</ObjectId>
       <Owner>root</Owner>
-      <StateNumber>851</StateNumber>
+      <StateNumber>1302</StateNumber>
       <DataType>bigint|0s</DataType>
     </sequence>
     <sequence id="32" parent="17" name="city_entity_id_seq">
-      <ObjectId>17304</ObjectId>
+      <ObjectId>18429</ObjectId>
       <Owner>root</Owner>
-      <StateNumber>852</StateNumber>
+      <StateNumber>1303</StateNumber>
       <DataType>bigint|0s</DataType>
     </sequence>
     <table id="33" parent="17" name="asset_entity">
-      <ObjectId>17296</ObjectId>
+      <ObjectId>18421</ObjectId>
       <Owner>root</Owner>
-      <StateNumber>857</StateNumber>
+      <StateNumber>1308</StateNumber>
     </table>
     <table id="34" parent="17" name="city_entity">
-      <ObjectId>17306</ObjectId>
+      <ObjectId>18431</ObjectId>
       <Owner>root</Owner>
-      <StateNumber>859</StateNumber>
+      <StateNumber>1310</StateNumber>
     </table>
     <table id="35" parent="17" name="department_city">
-      <ObjectId>17314</ObjectId>
+      <ObjectId>18439</ObjectId>
       <Owner>root</Owner>
-      <StateNumber>859</StateNumber>
+      <StateNumber>1310</StateNumber>
     </table>
     <table id="36" parent="17" name="department_entity">
-      <ObjectId>17319</ObjectId>
+      <ObjectId>18444</ObjectId>
       <Owner>root</Owner>
-      <StateNumber>857</StateNumber>
+      <StateNumber>1308</StateNumber>
     </table>
     <table id="37" parent="17" name="user_entity">
-      <ObjectId>17324</ObjectId>
+      <ObjectId>18449</ObjectId>
       <Owner>root</Owner>
-      <StateNumber>858</StateNumber>
+      <StateNumber>1309</StateNumber>
     </table>
     <column id="38" parent="33" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>851</StateNumber>
+      <StateNumber>1302</StateNumber>
       <TypeId>20</TypeId>
       <IdentityKind>by-default</IdentityKind>
     </column>
     <column id="39" parent="33" name="creation_date">
       <Position>2</Position>
       <DataType>date|0s</DataType>
-      <StateNumber>851</StateNumber>
+      <StateNumber>1302</StateNumber>
       <TypeId>1082</TypeId>
     </column>
     <column id="40" parent="33" name="description">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>851</StateNumber>
+      <StateNumber>1302</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="41" parent="33" name="high_cm">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>851</StateNumber>
+      <StateNumber>1302</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="42" parent="33" name="long_asset_cm">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>851</StateNumber>
+      <StateNumber>1302</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="43" parent="33" name="name">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>851</StateNumber>
+      <StateNumber>1302</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="44" parent="33" name="num_inventory">
       <Position>7</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>851</StateNumber>
+      <StateNumber>1302</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="45" parent="33" name="purchase_date">
       <Position>8</Position>
       <DataType>date|0s</DataType>
-      <StateNumber>851</StateNumber>
+      <StateNumber>1302</StateNumber>
       <TypeId>1082</TypeId>
     </column>
     <column id="46" parent="33" name="purchase_value">
       <Position>9</Position>
       <DataType>double precision|0s</DataType>
-      <StateNumber>851</StateNumber>
+      <StateNumber>1302</StateNumber>
       <TypeId>701</TypeId>
     </column>
     <column id="47" parent="33" name="serial">
       <Position>10</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>851</StateNumber>
+      <StateNumber>1302</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="48" parent="33" name="type">
       <Position>11</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>851</StateNumber>
+      <StateNumber>1302</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="49" parent="33" name="update_date">
       <Position>12</Position>
       <DataType>date|0s</DataType>
-      <StateNumber>851</StateNumber>
+      <StateNumber>1302</StateNumber>
       <TypeId>1082</TypeId>
     </column>
     <column id="50" parent="33" name="weight_kg">
       <Position>13</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>851</StateNumber>
+      <StateNumber>1302</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="51" parent="33" name="width_cm">
       <Position>14</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>851</StateNumber>
+      <StateNumber>1302</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="52" parent="33" name="department_id">
       <Position>15</Position>
       <DataType>bigint|0s</DataType>
-      <StateNumber>851</StateNumber>
+      <StateNumber>1302</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <column id="53" parent="33" name="user_id">
       <Position>16</Position>
       <DataType>bigint|0s</DataType>
-      <StateNumber>851</StateNumber>
+      <StateNumber>1302</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <index id="54" parent="33" name="asset_entity_pkey">
-      <ObjectId>17302</ObjectId>
-      <StateNumber>851</StateNumber>
+      <ObjectId>18427</ObjectId>
+      <StateNumber>1302</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
@@ -1744,27 +1744,27 @@ UC/10
       <ClassIds>3124</ClassIds>
     </index>
     <key id="55" parent="33" name="asset_entity_pkey">
-      <ObjectId>17303</ObjectId>
-      <StateNumber>851</StateNumber>
+      <ObjectId>18428</ObjectId>
+      <StateNumber>1302</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>asset_entity_pkey</UnderlyingIndexName>
     </key>
     <foreign-key id="56" parent="33" name="fkjkbycg7gq23c0hqisfi075wry">
-      <ObjectId>17334</ObjectId>
-      <StateNumber>857</StateNumber>
+      <ObjectId>18459</ObjectId>
+      <StateNumber>1308</StateNumber>
       <ColNames>department_id</ColNames>
-      <RefTableId>17319</RefTableId>
+      <RefTableId>18444</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>department_entity</RefTableName>
       <RefKeyName>department_entity_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="57" parent="33" name="fklcnhmq7tahs0m7pjs4a6jksuf">
-      <ObjectId>17339</ObjectId>
-      <StateNumber>858</StateNumber>
+      <ObjectId>18464</ObjectId>
+      <StateNumber>1309</StateNumber>
       <ColNames>user_id</ColNames>
-      <RefTableId>17324</RefTableId>
+      <RefTableId>18449</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>user_entity</RefTableName>
       <RefKeyName>user_entity_pkey</RefKeyName>
@@ -1774,37 +1774,37 @@ UC/10
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>852</StateNumber>
+      <StateNumber>1303</StateNumber>
       <TypeId>20</TypeId>
       <IdentityKind>by-default</IdentityKind>
     </column>
     <column id="59" parent="34" name="code_city">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>852</StateNumber>
+      <StateNumber>1303</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="60" parent="34" name="creation_date">
       <Position>3</Position>
       <DataType>date|0s</DataType>
-      <StateNumber>852</StateNumber>
+      <StateNumber>1303</StateNumber>
       <TypeId>1082</TypeId>
     </column>
     <column id="61" parent="34" name="name">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>852</StateNumber>
+      <StateNumber>1303</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="62" parent="34" name="update_date">
       <Position>5</Position>
       <DataType>date|0s</DataType>
-      <StateNumber>852</StateNumber>
+      <StateNumber>1303</StateNumber>
       <TypeId>1082</TypeId>
     </column>
     <index id="63" parent="34" name="city_entity_pkey">
-      <ObjectId>17312</ObjectId>
-      <StateNumber>852</StateNumber>
+      <ObjectId>18437</ObjectId>
+      <StateNumber>1303</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
@@ -1813,8 +1813,8 @@ UC/10
       <ClassIds>3124</ClassIds>
     </index>
     <key id="64" parent="34" name="city_entity_pkey">
-      <ObjectId>17313</ObjectId>
-      <StateNumber>852</StateNumber>
+      <ObjectId>18438</ObjectId>
+      <StateNumber>1303</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>city_entity_pkey</UnderlyingIndexName>
@@ -1823,19 +1823,19 @@ UC/10
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>853</StateNumber>
+      <StateNumber>1304</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <column id="66" parent="35" name="area_id">
       <Position>2</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>853</StateNumber>
+      <StateNumber>1304</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <index id="67" parent="35" name="department_city_pkey">
-      <ObjectId>17317</ObjectId>
-      <StateNumber>853</StateNumber>
+      <ObjectId>18442</ObjectId>
+      <StateNumber>1304</StateNumber>
       <ColNames>city_id
 area_id</ColNames>
       <Unique>1</Unique>
@@ -1845,28 +1845,28 @@ area_id</ColNames>
       <ClassIds>3124,3124</ClassIds>
     </index>
     <key id="68" parent="35" name="department_city_pkey">
-      <ObjectId>17318</ObjectId>
-      <StateNumber>853</StateNumber>
+      <ObjectId>18443</ObjectId>
+      <StateNumber>1304</StateNumber>
       <ColNames>city_id
 area_id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>department_city_pkey</UnderlyingIndexName>
     </key>
     <foreign-key id="69" parent="35" name="fknbdp4gmyspuxhqcc64i2m78dq">
-      <ObjectId>17349</ObjectId>
-      <StateNumber>860</StateNumber>
+      <ObjectId>18474</ObjectId>
+      <StateNumber>1311</StateNumber>
       <ColNames>city_id</ColNames>
-      <RefTableId>17319</RefTableId>
+      <RefTableId>18444</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>department_entity</RefTableName>
       <RefKeyName>department_entity_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="70" parent="35" name="fkeal8d3awfxs3nc7c6kkkesk8v">
-      <ObjectId>17344</ObjectId>
-      <StateNumber>859</StateNumber>
+      <ObjectId>18469</ObjectId>
+      <StateNumber>1310</StateNumber>
       <ColNames>area_id</ColNames>
-      <RefTableId>17306</RefTableId>
+      <RefTableId>18431</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>city_entity</RefTableName>
       <RefKeyName>city_entity_pkey</RefKeyName>
@@ -1876,30 +1876,30 @@ area_id</ColNames>
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>854</StateNumber>
+      <StateNumber>1305</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <column id="72" parent="36" name="creation_date">
       <Position>2</Position>
       <DataType>date|0s</DataType>
-      <StateNumber>854</StateNumber>
+      <StateNumber>1305</StateNumber>
       <TypeId>1082</TypeId>
     </column>
     <column id="73" parent="36" name="name">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>854</StateNumber>
+      <StateNumber>1305</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="74" parent="36" name="update_date">
       <Position>4</Position>
       <DataType>date|0s</DataType>
-      <StateNumber>854</StateNumber>
+      <StateNumber>1305</StateNumber>
       <TypeId>1082</TypeId>
     </column>
     <index id="75" parent="36" name="department_entity_pkey">
-      <ObjectId>17322</ObjectId>
-      <StateNumber>854</StateNumber>
+      <ObjectId>18447</ObjectId>
+      <StateNumber>1305</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
@@ -1908,8 +1908,8 @@ area_id</ColNames>
       <ClassIds>3124</ClassIds>
     </index>
     <key id="76" parent="36" name="department_entity_pkey">
-      <ObjectId>17323</ObjectId>
-      <StateNumber>854</StateNumber>
+      <ObjectId>18448</ObjectId>
+      <StateNumber>1305</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>department_entity_pkey</UnderlyingIndexName>
@@ -1918,60 +1918,60 @@ area_id</ColNames>
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>855</StateNumber>
+      <StateNumber>1306</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <column id="78" parent="37" name="birthday">
       <Position>2</Position>
       <DataType>date|0s</DataType>
-      <StateNumber>855</StateNumber>
+      <StateNumber>1306</StateNumber>
       <TypeId>1082</TypeId>
     </column>
     <column id="79" parent="37" name="creation_date">
       <Position>3</Position>
       <DataType>date|0s</DataType>
-      <StateNumber>855</StateNumber>
+      <StateNumber>1306</StateNumber>
       <TypeId>1082</TypeId>
     </column>
     <column id="80" parent="37" name="first_name">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>855</StateNumber>
+      <StateNumber>1306</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="81" parent="37" name="first_surname">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>855</StateNumber>
+      <StateNumber>1306</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="82" parent="37" name="num_document">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>855</StateNumber>
+      <StateNumber>1306</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="83" parent="37" name="second_name">
       <Position>7</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>855</StateNumber>
+      <StateNumber>1306</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="84" parent="37" name="second_surname">
       <Position>8</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>855</StateNumber>
+      <StateNumber>1306</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="85" parent="37" name="update_date">
       <Position>9</Position>
       <DataType>date|0s</DataType>
-      <StateNumber>855</StateNumber>
+      <StateNumber>1306</StateNumber>
       <TypeId>1082</TypeId>
     </column>
     <index id="86" parent="37" name="user_entity_pkey">
-      <ObjectId>17330</ObjectId>
-      <StateNumber>855</StateNumber>
+      <ObjectId>18455</ObjectId>
+      <StateNumber>1306</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
@@ -1980,8 +1980,8 @@ area_id</ColNames>
       <ClassIds>3124</ClassIds>
     </index>
     <index id="87" parent="37" name="uk_l6ltic8jtbw6kty72cqdqxs00">
-      <ObjectId>17332</ObjectId>
-      <StateNumber>856</StateNumber>
+      <ObjectId>18457</ObjectId>
+      <StateNumber>1307</StateNumber>
       <ColNames>num_document</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
@@ -1990,15 +1990,15 @@ area_id</ColNames>
       <ClassIds>3126</ClassIds>
     </index>
     <key id="88" parent="37" name="user_entity_pkey">
-      <ObjectId>17331</ObjectId>
-      <StateNumber>855</StateNumber>
+      <ObjectId>18456</ObjectId>
+      <StateNumber>1306</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>user_entity_pkey</UnderlyingIndexName>
     </key>
     <key id="89" parent="37" name="uk_l6ltic8jtbw6kty72cqdqxs00">
-      <ObjectId>17333</ObjectId>
-      <StateNumber>856</StateNumber>
+      <ObjectId>18458</ObjectId>
+      <StateNumber>1307</StateNumber>
       <ColNames>num_document</ColNames>
       <UnderlyingIndexName>uk_l6ltic8jtbw6kty72cqdqxs00</UnderlyingIndexName>
     </key>

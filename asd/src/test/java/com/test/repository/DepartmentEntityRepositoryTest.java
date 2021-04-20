@@ -2,62 +2,68 @@ package com.test.repository;
 
 import com.test.entity.CityEntity;
 import com.test.entity.DepartmentEntity;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.IntStream;
+import javax.persistence.EntityManager;
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
-@Transactional
-@Disabled
 class DepartmentEntityRepositoryTest {
 
     @Autowired
     DepartmentEntityRepository departmentEntityRepository;
 
     @Autowired
-    TestEntityManager testEntityManager;
+    EntityManager entityManager;
 
-    @BeforeEach
-    void setUp(){
+    @Test
+    void testFindByName() {
         CityEntity cityEntity = new CityEntity();
-        cityEntity.setName("Bogota");
+        cityEntity.setName("Cucuta");
+        cityEntity.setCodeCity("CT1");
 
+        entityManager.persist(cityEntity);
+        entityManager.flush();
 
-        testEntityManager.persistAndFlush(cityEntity);
+        Set<CityEntity> cities = new HashSet<>();
+        cities.add(cityEntity);
 
-        //List<DepartmentEntity> departmentEntityList = new ArrayList<>();
-        IntStream.range(0,10).forEach(i -> {
-            DepartmentEntity departmentEntity = new DepartmentEntity();
-            departmentEntity.addCity(cityEntity);
-            departmentEntity.setName("Departamento test "+ i);
-            //departmentEntityList.add(departmentEntity);
-            testEntityManager.persistAndFlush(departmentEntity);
-        });
+        DepartmentEntity departmentEntity = new DepartmentEntity();
+        departmentEntity.setCityEntities(cities);
+        departmentEntity.setName("Department 1");
+        entityManager.persist(departmentEntity);
+        entityManager.flush();
 
-      //  departmentEntityRepository.saveAll(departmentEntityList);
+        assertEquals(departmentEntity, departmentEntityRepository.findByName("Department 1"));
+        assertNull(departmentEntityRepository.findByName("Department 2"));
+
     }
 
     @Test
-    @Disabled
-    void testGetDepartments(){
-        List<DepartmentEntity> departmentEntityList = (List<DepartmentEntity>) departmentEntityRepository.findAll();
-        assertFalse(departmentEntityList.isEmpty(), "La lista está vacia");
-        assertEquals("Departamento test 8",departmentEntityList.stream()
-                .map(DepartmentEntity :: getName)
-                .filter(args -> "Departamento test 8".equals(args))
-                .findAny().get(), "No existe el elemento");
+    void testExistsByName() {
+        CityEntity cityEntity = new CityEntity();
+        cityEntity.setName("Cucuta");
+        cityEntity.setCodeCity("CT1");
 
+        entityManager.persist(cityEntity);
+        entityManager.flush();
+
+        Set<CityEntity> cities = new HashSet<>();
+        cities.add(cityEntity);
+
+        DepartmentEntity departmentEntity = new DepartmentEntity();
+        departmentEntity.setCityEntities(cities);
+        departmentEntity.setName("Department 1");
+        entityManager.persist(departmentEntity);
+        entityManager.flush();
+
+        assertTrue(departmentEntityRepository.existsByName("Department 1"));
+        assertFalse(departmentEntityRepository.existsByName("Department 2"));
     }
-
 
 }

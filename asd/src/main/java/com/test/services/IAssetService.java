@@ -1,7 +1,7 @@
 package com.test.services;
 
 import com.test.api.request.AssetAreaDto;
-import com.test.api.request.AssetDto;
+import com.test.api.request.AssetSearchDto;
 import com.test.api.request.AssetUserDto;
 import com.test.api.response.GeneralResponse;
 import com.test.entity.AssetEntity;
@@ -19,6 +19,6 @@ public interface IAssetService {
 
     Optional<GeneralResponse<AssetAreaDto>> update(AssetAreaDto assetAreaDto);
 
-    GeneralResponse<List<AssetEntity>> get(AssetDto assetDto);
+    GeneralResponse<List<AssetEntity>> get(AssetSearchDto assetSearchDto);
 
 }

@@ -14,11 +14,13 @@ public abstract class AssetDto {
     @NotBlank(message = "Name is required")
     protected String name;
     protected String description;
+
     @NotBlank(message = "Type is required")
     protected String type;
+
     @NotBlank(message = "Serial is required")
     protected String serial;
-    @NotBlank(message = "Inventory number is required")
+
     protected String numInventory;
     protected String weightKg;
     protected String highCm;

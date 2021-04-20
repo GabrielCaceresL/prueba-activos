@@ -27,7 +27,7 @@ public class DepartmentController {
     }
 
     @PutMapping
-    public ResponseEntity<Optional<GeneralResponse<DepartmentDto>>> update(@RequestBody DepartmentDto body){
+    public ResponseEntity<Optional<GeneralResponse<DepartmentDto>>> update(@Valid @RequestBody DepartmentDto body){
         return ResponseEntity.ok(iDepartmentService.update(body));
     }
 

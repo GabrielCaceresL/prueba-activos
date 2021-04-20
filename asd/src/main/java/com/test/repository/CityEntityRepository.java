@@ -1,7 +1,6 @@
 package com.test.repository;
 
 import com.test.entity.CityEntity;
-import com.test.entity.UserEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

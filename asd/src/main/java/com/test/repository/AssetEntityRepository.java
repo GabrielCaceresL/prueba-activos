@@ -2,7 +2,6 @@ package com.test.repository;
 
 import com.test.entity.AssetEntity;
 import org.springframework.data.jpa.repository.EntityGraph;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,10 +12,12 @@ import java.util.Optional;
 @Repository
 public interface AssetEntityRepository extends CrudRepository<AssetEntity, Long> {
 
-    @EntityGraph(attributePaths = {"userEntity","departmentEntity"})
+    @EntityGraph(attributePaths = {"userEntity", "departmentEntity"})
     List<AssetEntity> findByTypeOrPurchaseDateOrSerial(String type, LocalDate purchaseDate, String serial);
 
-    @EntityGraph(attributePaths = {"userEntity","departmentEntity"})
+    boolean existsByTypeOrSerialOrPurchaseDate(String type, String serial, LocalDate purchaseDate);
+
+    @EntityGraph(attributePaths = {"userEntity", "departmentEntity"})
     Optional<AssetEntity> findBySerial(String serial);
 
     boolean existsBySerial(String serial);
