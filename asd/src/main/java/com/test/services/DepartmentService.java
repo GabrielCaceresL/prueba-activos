@@ -14,6 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 import java.util.Set;
 
+import static com.test.enums.ConstantProvider.*;
+
+
 @Service
 @Transactional
 @Slf4j
@@ -29,37 +32,50 @@ public class DepartmentService implements IDepartmentService {
 
     @Override
     public Optional<GeneralResponse<DepartmentDto>> save(DepartmentDto departmentDto) {
-        DepartmentEntity departmentEntity = new DepartmentEntity();//Creación del objeto
-        departmentEntity.setName(departmentDto.getName());//Creación del objeto
-        return getDepartmentDtoGeneralResponse(departmentDto, departmentEntity);
+        DepartmentEntity departmentEntity = new DepartmentEntity();
+        if(departmentEntityRepository.existsByName(departmentDto.getName())){
+            throw new RuntimeException(DEPARTMENT_EXISTS);
+        }
+        departmentEntity.setName(departmentDto.getName());
+        DepartmentDto departmentResponse = getDepartmentDtoGeneralResponse(departmentDto,departmentEntity);
+        return Optional.ofNullable(new GeneralResponse<>(departmentResponse, DEPARTMENT_SAVE_SUCCESSFUL));
     }
 
     @Override
     public Optional<GeneralResponse<DepartmentDto>> update(DepartmentDto departmentDto) {
         DepartmentEntity departmentEntity = departmentEntityRepository.findByName(departmentDto.getName());
-
-        return getDepartmentDtoGeneralResponse(departmentDto, departmentEntity);
+        if (!departmentEntityRepository.existsByName(departmentDto.getName())) {
+            throw new RuntimeException(DEPARTMENT_NOT_EXISTS);
+        }
+        DepartmentDto departmentResponse = getDepartmentDtoGeneralResponse(departmentDto,departmentEntity);
+        return Optional.ofNullable(new GeneralResponse<>(departmentResponse, DEPARTMENT_UPDATE_SUCCESSFUL));
     }
 
     @Override
     public Optional<GeneralResponse<DepartmentDto>> get(String name) {
-        log.info("name city -> {}", name);
+        if (!departmentEntityRepository.existsByName(name)) {
+            throw new RuntimeException(DEPARTMENT_NOT_FOUND);
+        }
         DepartmentEntity departmentEntity = departmentEntityRepository.findByName(name);
-        log.info("departmentEntity -> {}", departmentEntity);
         DepartmentDto departmentDto = IDepartmentMapper.INSTANCE.toDto(departmentEntity);
         departmentDto.setCityEntities(departmentEntity.nameCities());
-        return Optional.ofNullable(new GeneralResponse<>(departmentDto, ""));
+        return Optional.ofNullable(new GeneralResponse<>(departmentDto, DEPARTMENT_FOUND));
     }
 
-    private Optional<GeneralResponse<DepartmentDto>> getDepartmentDtoGeneralResponse(DepartmentDto departmentDto, DepartmentEntity departmentEntity) {
-        Set<CityEntity> cities = cityEntityRepository.findAllByNameIn(departmentDto.getCityEntities()); //Encontrar ciudades
-        departmentEntity.setCityEntities(cities); //Actualizar objeto con ciudades
-        DepartmentEntity departmentEntity1 = departmentEntityRepository.save(departmentEntity);  //Guardar el objeto
+    private DepartmentDto getDepartmentDtoGeneralResponse(DepartmentDto departmentDto, DepartmentEntity departmentEntity) {
+        Set<CityEntity> cities = cityEntityRepository.findAllByNameIn(departmentDto.getCityEntities());
+        departmentDto.getCityEntities().forEach(city -> {
+            if(!cityEntityRepository.existsByName(city)){
+                throw new RuntimeException(CITY_NOT_EXISTS+": "+ city);
+            }
+        });
 
+        departmentEntity.setCityEntities(cities);
+        DepartmentEntity departmentEntity1 = departmentEntityRepository.save(departmentEntity);
         DepartmentDto departmentDtoResponse = IDepartmentMapper.INSTANCE
-                .toDto(departmentEntityRepository.save(departmentEntity)); //Crea el response
-        departmentDtoResponse.setCityEntities(departmentEntity1.nameCities()); //ASigna los nombres de ciudades al response
-        return Optional.ofNullable(new GeneralResponse<>(departmentDtoResponse, ""));
+                .toDto(departmentEntityRepository.save(departmentEntity));
+        departmentDtoResponse.setCityEntities(departmentEntity1.nameCities());
+        return departmentDtoResponse;
     }
 
 

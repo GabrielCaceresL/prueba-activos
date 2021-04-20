@@ -27,14 +27,14 @@ public class CityController {
     }
 
     @PutMapping
-    public ResponseEntity<Optional<GeneralResponse<CityDto>>> update(@RequestBody CityDto body, @PathParam("id") Long id){
+    public ResponseEntity<Optional<GeneralResponse<CityDto>>> update(@RequestBody CityDto body){
         log.info("body -> {}",body.toString());
-        return ResponseEntity.ok(iCityService.update(body, id));
+        return ResponseEntity.ok(iCityService.update(body));
     }
 
     @GetMapping
-    public ResponseEntity<Optional<GeneralResponse<CityDto>>> get(@PathParam("id") Long id){
-        return ResponseEntity.ok(iCityService.get(id));
+    public ResponseEntity<Optional<GeneralResponse<CityDto>>> get(@PathParam("codeCity") String codeCity){
+        return ResponseEntity.ok(iCityService.get(codeCity));
     }
 
 

@@ -6,6 +6,7 @@ import com.test.entity.UserEntity;
 import com.test.mappers.IUserMapper;
 import com.test.repository.UserEntityRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,7 +44,7 @@ public class UserService implements IUserService {
     @Transactional
     public Optional<GeneralResponse<UserDto>> update(UserDto userDto) {
         UserEntity userEntity = IUserMapper.INSTANCE.toUserEntity(userDto);
-        if (userEntityRepository.existsByNumDocument(userEntity.getNumDocument())) {
+        if (!userEntityRepository.existsByNumDocument(userEntity.getNumDocument())) {
             throw new RuntimeException(USER_NOT_EXIST);
         }
         return userEntityRepository
@@ -61,7 +62,7 @@ public class UserService implements IUserService {
     @Override
     @Transactional
     public Optional<GeneralResponse<UserDto>> get(String numDocument) {
-        if (userEntityRepository.existsByNumDocument(numDocument)) {
+        if (!userEntityRepository.existsByNumDocument(numDocument)) {
             throw new RuntimeException(USER_NOT_FOUND);
         }
         return userEntityRepository

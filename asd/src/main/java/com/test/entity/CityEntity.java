@@ -17,6 +17,7 @@ public class CityEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
+    private String codeCity;
     private LocalDate creationDate;
     private LocalDate updateDate;
 

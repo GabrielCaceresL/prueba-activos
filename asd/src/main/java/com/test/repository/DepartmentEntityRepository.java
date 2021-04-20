@@ -11,6 +11,8 @@ public interface DepartmentEntityRepository extends CrudRepository<DepartmentEnt
     @EntityGraph(attributePaths = {"cityEntities"})
     DepartmentEntity findByName(String nameDepartment);
 
+    boolean existsByName(String nameDepartment);
+
 
 
 }

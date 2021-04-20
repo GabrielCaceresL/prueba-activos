@@ -15,9 +15,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
+
+import static com.test.enums.ConstantProvider.*;
 
 @Service
 @Transactional
@@ -32,32 +33,40 @@ public class AssetService implements IAssetService {
     @Override
     public Optional<GeneralResponse<AssetUserDto>> save(AssetUserDto assetUserDto) {
         AssetEntity assetEntity = IAssetMapper.INSTANCE.toAssetEntity(assetUserDto);
-        log.info("DOC USER -> {}",assetUserDto.getDocumentUser());
+        if (assetEntityRepository.existsBySerial(assetUserDto.getSerial())) {
+            throw new RuntimeException(ASSET_EXISTS);
+        }
         AssetEntity assetEntityStored = userEntityRepository.findByNumDocument(assetUserDto.getDocumentUser())
                 .map(userFromDb -> {
                     assetEntity.setUserEntity(userFromDb);
                     return assetEntityRepository.save(assetEntity);
-                }).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+                }).orElseThrow(() -> new RuntimeException(USER_NOT_FOUND));
         AssetUserDto assetResponse = IAssetMapper.INSTANCE.toUserDto(assetEntityStored);
-        return Optional.of(new GeneralResponse<>(assetResponse, "Correcto Usuario---"));
+        return Optional.of(new GeneralResponse<>(assetResponse, ASSET_SAVE_SUCCESSFUL));
     }
 
     @Override
     public Optional<GeneralResponse<AssetAreaDto>> save(AssetAreaDto assetAreaDto) {
         AssetEntity assetEntity = IAssetMapper.INSTANCE.toAssetEntity(assetAreaDto);
+        if (assetEntityRepository.existsBySerial(assetAreaDto.getSerial())) {
+            throw new RuntimeException(ASSET_EXISTS);
+        }
         DepartmentEntity departmentFromDb = departmentEntityRepository
                 .findByName(assetAreaDto.getNameDepartment());
         if (departmentFromDb == null) {
-            throw new RuntimeException("Departamento no encontrado");
+            throw new RuntimeException(DEPARTMENT_NOT_FOUND);
         }
         assetEntity.setDepartmentEntity(departmentFromDb);
         AssetEntity assetAreaStored = assetEntityRepository.save(assetEntity);
         AssetAreaDto assetResponse = IAssetMapper.INSTANCE.toAreaDto(assetAreaStored);
-        return Optional.ofNullable(new GeneralResponse<>(assetResponse, "Correcto Area---"));
+        return Optional.ofNullable(new GeneralResponse<>(assetResponse, ASSET_SAVE_SUCCESSFUL));
     }
 
     @Override
     public Optional<GeneralResponse<AssetUserDto>> update(AssetUserDto assetUserDto) {
+        if (!assetEntityRepository.existsBySerial(assetUserDto.getSerial())) {
+            throw new RuntimeException(ASSET_NOT_EXISTS);
+        }
         return userEntityRepository
                 .findByNumDocument(assetUserDto.getDocumentUser())
                 .flatMap(userFromDb ->
@@ -72,12 +81,15 @@ public class AssetService implements IAssetService {
                 .map(asset -> {
                     AssetUserDto assetUserDtoResponse = IAssetMapper.INSTANCE.toUserDto(asset);
                     assetUserDtoResponse.setDocumentUser(asset.getUserEntity().getNumDocument());
-                    return new GeneralResponse<>(assetUserDtoResponse, "USer Update ----------");
+                    return new GeneralResponse<>(assetUserDtoResponse, ASSET_UPDATE_SUCCESSFUL);
                 });
     }
 
     @Override
     public Optional<GeneralResponse<AssetAreaDto>> update(AssetAreaDto assetAreaDto) {
+        if (!assetEntityRepository.existsBySerial(assetAreaDto.getSerial())) {
+            throw new RuntimeException(ASSET_NOT_EXISTS);
+        }
         return Optional.ofNullable(departmentEntityRepository
                 .findByName(assetAreaDto.getNameDepartment()))
                 .flatMap(departmentFromDb ->
@@ -92,7 +104,7 @@ public class AssetService implements IAssetService {
                 .map(asset -> {
                     AssetAreaDto assetAreaDtoResponse = IAssetMapper.INSTANCE.toAreaDto(asset);
                     assetAreaDtoResponse.setNameDepartment(asset.getDepartmentEntity().getName());
-                    return new GeneralResponse<>(assetAreaDtoResponse, "Department Update ----------");
+                    return new GeneralResponse<>(assetAreaDtoResponse, ASSET_UPDATE_SUCCESSFUL);
                 });
     }
 
@@ -111,9 +123,12 @@ public class AssetService implements IAssetService {
 
     @Override
     public GeneralResponse<List<AssetEntity>> get(AssetDto assetDto) {
+        if (!assetEntityRepository.existsBySerial(assetDto.getSerial())) {
+            throw new RuntimeException(ASSET_NOT_FOUND);
+        }
         List<AssetEntity> assetEntities = assetEntityRepository.findByTypeOrPurchaseDateOrSerial(assetDto.getType(), assetDto.getPurchaseDate(),
                 assetDto.getSerial());
-        return new GeneralResponse<>(assetEntities,"Assets founds");
+        return new GeneralResponse<>(assetEntities, ASSET_FOUND);
     }
 
 }

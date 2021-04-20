@@ -11,7 +11,7 @@ import javax.validation.constraints.NotBlank;
 @EqualsAndHashCode(callSuper = false)
 public class AssetAreaDto extends AssetDto{
 
-    @NotBlank(message = "Name department required")
+    @NotBlank(message = "Department name required")
     private String nameDepartment;
 
 }

@@ -9,7 +9,7 @@ public interface ICityService {
 
     Optional<GeneralResponse<CityDto>> save(CityDto cityDto);
 
-    Optional<GeneralResponse<CityDto>> update(CityDto userDto, Long id);
+    Optional<GeneralResponse<CityDto>> update(CityDto userDto);
 
-    Optional<GeneralResponse<CityDto>> get(Long id);
+    Optional<GeneralResponse<CityDto>> get(String codeCity);
 }

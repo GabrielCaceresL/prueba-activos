@@ -19,4 +19,5 @@ public interface AssetEntityRepository extends CrudRepository<AssetEntity, Long>
     @EntityGraph(attributePaths = {"userEntity","departmentEntity"})
     Optional<AssetEntity> findBySerial(String serial);
 
+    boolean existsBySerial(String serial);
 }

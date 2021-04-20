@@ -12,4 +12,7 @@ public class CityDto {
     @NotBlank(message = "Name is required")
     private String name;
 
+    @NotBlank(message = "Name is required")
+    private String codeCity;
+
 }

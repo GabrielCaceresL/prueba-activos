@@ -27,11 +27,12 @@ public class CityService implements ICityService{
     @Transactional
     public Optional<GeneralResponse<CityDto>> save(CityDto cityDto) {
         CityEntity cityEntity = ICityMapper.INSTANCE.toCityEntity(cityDto);
-
-        cityEntityRepository.findById(cityEntity.getId())
-                .ifPresent(cityEntity1 -> {
-                    throw new RuntimeException("La ciudad ya existe");
-                });
+        if(cityEntityRepository.existsByName(cityEntity.getName())) {
+            throw new RuntimeException(CITY_NAME_EXISTS);
+        }
+        if(cityEntityRepository.existsByCodeCity(cityEntity.getCodeCity())) {
+            throw new RuntimeException(CITY_CODE_EXISTS);
+        }
         CityEntity storeCity = cityEntityRepository.save(cityEntity);
 
         return Optional.ofNullable(storeCity)
@@ -41,23 +42,29 @@ public class CityService implements ICityService{
 
     @Override
     @Transactional
-    public Optional<GeneralResponse<CityDto>> update(CityDto userDto, Long id) {
-        CityEntity cityEntity = ICityMapper.INSTANCE.toCityEntity(userDto);
-        log.info("userDto - > {}", userDto.toString());
-        log.info("cityEntity - > {}", cityEntity.toString());
+    public Optional<GeneralResponse<CityDto>> update(CityDto cityDto) {
+        log.info("City dto update -> {}",cityDto.toString());
+        CityEntity cityEntity = ICityMapper.INSTANCE.toCityEntity(cityDto);
+        if (!cityEntityRepository.existsByCodeCity(cityEntity.getCodeCity())) {
+            throw new RuntimeException(CITY_NOT_EXISTS);
+        }
         return cityEntityRepository
-                .findById(id)
+                .findByCodeCity(cityEntity.getCodeCity())
                 .map(cityFromDb -> {
                     cityFromDb.setName(cityEntity.getName());
+                    cityFromDb.setCodeCity(cityEntity.getCodeCity());
                     return cityEntityRepository.save(cityFromDb);
                 })
                 .map(cityFromDb -> new GeneralResponse<>(ICityMapper.INSTANCE.toDto(cityFromDb), CITY_UPDATE_SUCCESSFUL));
     }
 
     @Override
-    public Optional<GeneralResponse<CityDto>> get(Long id) {
+    public Optional<GeneralResponse<CityDto>> get(String codeCity) {
+        if (!cityEntityRepository.existsByCodeCity(codeCity)) {
+            throw new RuntimeException(CITY_NOT_FOUND);
+        }
         return cityEntityRepository
-                .findById(id)
+                .findByCodeCity(codeCity)
                 .map(cityEntity -> new GeneralResponse<>(ICityMapper.INSTANCE.toDto(cityEntity), CITY_FOUND));
     }
 }

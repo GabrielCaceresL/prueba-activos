@@ -11,7 +11,7 @@ import javax.validation.constraints.NotBlank;
 @EqualsAndHashCode(callSuper = false)
 public class AssetUserDto extends AssetDto {
 
-    @NotBlank(message = "Document User is required")
+    @NotBlank(message = "User document is required")
     private String documentUser;
 
 
