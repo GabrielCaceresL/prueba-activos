@@ -32,7 +32,7 @@ docker-compose up
 
 > If you already have [Postgres](https://www.postgresql.org/) installed in
 your computer, you can modify the DataBase port, db username and db password in file `application.properties`,
->  * Current port is '5432'
+>  * Current port is '9010'
 >  * Current username is 'root'
 >  * Current password is 'root'
 >  - Properties to update: 
