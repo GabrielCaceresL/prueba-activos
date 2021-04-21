@@ -37,7 +37,7 @@ is an open-source build automation tool that is designed to be flexible enough t
 - You need a Database to persist Data
 - Before run application, follow the next steps:
 > Deploy MariaDb:
-> 1. Change into `cd docker-db`, in terminal use:
+> 1. Change into `cd db-on-docker`, in terminal use:
 ```bash
 docker-compose up
 ```
@@ -61,8 +61,8 @@ your computer, you can modify the DataBase port, db username and db password in 
 Once you have an active database, open another terminal, go to the root folder `cd prueba-activos`, and use:
 
 ```bash
-./mvn clean install
-java -jar prueba-activos/asd/target/prueba-tecnica-asd-*.jar
+ ./mvnw clean package -DskipTests
+java -jar asd/target/prueba-tecnica-asd-*.jar
 ```
 
 * This application runs over port 8080, so you should prefix endpoints with http://localhost:8080/
