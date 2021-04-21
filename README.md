@@ -62,7 +62,7 @@ java -jar target/prueba-tecnica-asd-*.jar
 > * For local consume: (using localhost:8080)
 > * Postman local Collection in `PruebaActivos localhost.postman_collection.json`
  
-> * For remote consume: (using http://anagramsloadbalances-1195462994.us-east-2.elb.amazonaws.com)
+> * For remote consume: (using http://ec2-3-235-41-158.compute-1.amazonaws.com:8080)
 > * Prod Postman Collection in `PruebaActivos AWS.postman_collection.json`
 
 
