@@ -45,7 +45,7 @@ your computer, you can modify the DataBase port, db username and db password in 
 ## For Run tests use
 
 ```bash
-./mvn clean test
+mvn clean test
 ```
 ## For Run api use
 ```bash
@@ -55,8 +55,8 @@ java -jar asd/target/prueba-tecnica-asd-*.jar
 
 * This application runs over port 8080, so you should prefix endpoints with http://localhost:8080/
 ## Swagger Documentation
-http://ec2-3-235-41-158.compute-1.amazonaws.com:8080/swagger-ui/index.html
-search "/v3/api-docs" and go to explore
+> http://ec2-3-235-41-158.compute-1.amazonaws.com:8080/swagger-ui/index.html
+> search "/v3/api-docs" and go to explore
 
 > Is recommended to use [POSTMAN](https://www.postman.com/) to consume the Endpoints.
 > * For local consume: (using localhost:8080)
