@@ -20,18 +20,6 @@ is an open-source build automation tool that is designed to be flexible enough t
 * Execute: `git clone https://github.com/GabrielCaceresL/prueba-activos.git`.
 * Change into the new directory `cd prueba-activos`
 
-## Build project
-* If you are in Windows, is recommended to use Git Bash to run the bash commands.
-
-```bash
-./mvn clean install 
-```
-
-## Run tests
-
-```bash
-./mvn clean test
-```
 
 ## Run
 - You need a Database to persist Data
@@ -58,10 +46,17 @@ your computer, you can modify the DataBase port, db username and db password in 
 > Located into `cd src/main/resources`
 
 ---
-Once you have an active database, open another terminal, go to the root folder `cd prueba-activos`, and use:
+Once you have an active database, open another terminal, go to the root folder `cd prueba-activos/asd`, and use:
+
+
+## Run tests
 
 ```bash
- ./mvnw clean package -DskipTests
+./mvn clean test
+```
+
+```bash
+mvnw clean install 
 java -jar asd/target/prueba-tecnica-asd-*.jar
 ```
 
