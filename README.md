@@ -36,7 +36,7 @@ your computer, you can modify the DataBase port, db username and db password in 
 >  * Current username is 'root'
 >  * Current password is 'root'
 >  - Properties to update: 
->  - jdbc:postgresql://localhost:5432/assets?createDatabaseIfNotExist=true?createDatabaseIfNotExist=true 
+>  - jdbc:postgresql://localhost:9010/assets?createDatabaseIfNotExist=true?createDatabaseIfNotExist=true 
 >  - spring.datasource.username='root'
 >  - spring.datasource.password='root'
 
