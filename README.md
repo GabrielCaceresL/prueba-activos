@@ -24,14 +24,11 @@ is an open-source build automation tool that is designed to be flexible enough t
 ## Run
 - You need a Database to persist Data
 - Before run application, follow the next steps:
-> Deploy MariaDb:
-> 1. Change into `cd db-on-docker`, in terminal use:
+> Deploy Posgres:
+>  - Change into `cd db-on-docker`, in terminal use:
 ```bash
 docker-compose up
 ```
-In linux:
-```bash
-sudo docker-compose up
 
 > If you already have [Postgres](https://www.postgresql.org/) installed in
 your computer, you can modify the DataBase port, db username and db password in file `application.properties`,
