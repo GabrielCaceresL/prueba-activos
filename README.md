@@ -41,19 +41,13 @@ your computer, you can modify the DataBase port, db username and db password in 
 >  - spring.datasource.password='root'
 
 ---
+> Once you have an active database, open another terminal, go to the root folder `cd prueba-activos/asd`, and use:
 ## For Run tests use
 
 ```bash
 ./mvn clean test
 ```
-Once you have an active database, open another terminal, go to the root folder `cd prueba-activos/asd`, and use:
-
-```bash
-mvnw clean install 
-java -jar asd/target/prueba-tecnica-asd-*.jar
-```
-
-
+## For Run api use
 ```bash
 mvnw clean install 
 java -jar asd/target/prueba-tecnica-asd-*.jar
