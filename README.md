@@ -50,18 +50,18 @@ mvn clean test
 ## For Run api use
 ```bash
 mvnw clean install 
-java -jar asd/target/prueba-tecnica-asd-*.jar
+java -jar target/prueba-tecnica-asd-*.jar
 ```
 
 * This application runs over port 8080, so you should prefix endpoints with http://localhost:8080/
 ## Swagger Documentation
 > http://ec2-3-235-41-158.compute-1.amazonaws.com:8080/swagger-ui/index.html
 > search "/v3/api-docs" and go to explore
-
+---
 > Is recommended to use [POSTMAN](https://www.postman.com/) to consume the Endpoints.
 > * For local consume: (using localhost:8080)
 > * Postman local Collection in `PruebaActivos localhost.postman_collection.json`
- ---
+ 
 > * For remote consume: (using http://anagramsloadbalances-1195462994.us-east-2.elb.amazonaws.com)
 > * Prod Postman Collection in `PruebaActivos AWS.postman_collection.json`
 
